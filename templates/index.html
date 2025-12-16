@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligent OCR System</title>
+    <style>
+        pre {
+            white-space: pre-wrap;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Upload Document</h2>
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Extract</button>
+</form>
+
+{% if raw_text %}
+    <h3>OCR Extracted Text (Full Content)</h3>
+    <pre>{{ raw_text }}</pre>
+{% endif %}
+
+{% if result %}
+    <h3>Structured Extracted Data</h3>
+    <ul>
+        {% for key, value in result.items() %}
+            <li><b>{{ key }}</b>: {{ value }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+</body>
+</html>
+
